@@ -188,6 +188,7 @@ int main()
 	MinFuncType minFuncAddr = (MinFuncType)exEngine->getFunctionAddress(minFunc->getName());
 	printf("minFuncAddr=%lx %s \n", (unsigned long)minFuncAddr, minFunc->getName());
 
+	module->print(errs(), nullptr);
 
 	// swap A and B . only first one is ok
 	result = addFuncAddr(5, 3);
