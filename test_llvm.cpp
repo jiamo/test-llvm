@@ -177,16 +177,21 @@ int main()
 
 	uint32_t result;
 
-	// B
+
+	// A
+	Function *minFunc = CreateMin(context, module);
 	Function *addFunc = CreateAdd(context, module);
+	
+	
+	MinFuncType minFuncAddr = (MinFuncType)exEngine->getFunctionAddress(minFunc->getName());
+	printf("minFuncAddr=%lx %s \n", (unsigned long)minFuncAddr, minFunc->getName());
+
+	// B
+
 	AddFuncType addFuncAddr = (AddFuncType)exEngine->getFunctionAddress(addFunc->getName());
 	printf("addFuncAddr=%lx %s \n", (unsigned long)addFuncAddr, addFunc->getName());
 
 
-	// A
-	Function *minFunc = CreateMin(context, module);
-	MinFuncType minFuncAddr = (MinFuncType)exEngine->getFunctionAddress(minFunc->getName());
-	printf("minFuncAddr=%lx %s \n", (unsigned long)minFuncAddr, minFunc->getName());
 
 	module->print(errs(), nullptr);
 
